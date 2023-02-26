@@ -22,9 +22,7 @@
 ## Author: Ahmed hany <Ahmed hany@DESKTOP-LVBHF97>
 ## Created: 2023-02-20
 
-function [x_arr,y_arr]= euler_forward (f,x0,xf,y0,h)
-  ## h=(xf-x0)/n;
-  n=(xf-x0)/h;
+function [x_arr,y_arr]= euler_forward (f,x0,y0,h,n)
   x=x0;
   y=y0;
   x_arr=[0:n];
@@ -32,8 +30,7 @@ function [x_arr,y_arr]= euler_forward (f,x0,xf,y0,h)
   for i=0:n
     x_arr(i+1)=x;
     y_arr(i+1)=y;
-
-    y=y+h*eval(f);
+    y=y+h*f(x,y);
     x=x+h;
   end
   x=x_arr;
